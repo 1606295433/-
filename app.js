@@ -38,8 +38,8 @@ const USER_KEY    = 'qingji_user';
 // 2. 创建新项目，复制 Project URL 和 anon/public key
 // 3. 在 SQL Editor 中运行下方建表语句
 // 4. 将 URL 和 KEY 填入下面两行
-const SUPABASE_URL = 'https://你的项目ID.supabase.co';
-const SUPABASE_KEY = '你的anon_key';
+const SUPABASE_URL = 'https://itafoblrdrmjalbldoddq.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_tuwwaA4uprOoICnSk-YUsA_8eAc_fpo';
 
 let supabase = null;
 let userId = '';
