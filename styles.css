@@ -19,6 +19,10 @@
   --orange: #F97316;
   --orange-soft: color-mix(in oklch, #F97316 12%, transparent);
   --blue-soft: color-mix(in oklch, #2563EB 8%, transparent);
+  --purple-soft: color-mix(in oklch, #8B5CF6 12%, transparent);
+  --sky-soft: color-mix(in oklch, #0EA5E9 12%, transparent);
+  --indigo-soft: color-mix(in oklch, #6366F1 12%, transparent);
+  --cyan-soft: color-mix(in oklch, #06B6D4 12%, transparent);
   --font: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   --mono: 'SF Mono', ui-monospace, Menlo, monospace;
   --safe-top: env(safe-area-inset-top, 0px);
@@ -364,6 +368,7 @@ body {
 
 .pay-grid {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   padding: 0 16px;
   margin-bottom: 16px;
@@ -689,3 +694,100 @@ body {
 .fw-600 { font-weight: 600; }
 .num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
 .flex-between { display: flex; align-items: center; justify-content: space-between; }
+
+/* ─── Debt / Savings Cards ──────────────────────────────── */
+.debt-card {
+  margin-bottom: 10px;
+}
+.debt-detail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.add-debt-btn {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 2px 8px;
+}
+.del-btn {
+  font-size: 14px;
+  color: var(--red);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+  opacity: 0.6;
+}
+.del-btn:hover { opacity: 1; }
+
+/* ─── Goal Card ─────────────────────────────────────────── */
+.goal-card {
+  margin-bottom: 10px;
+}
+
+/* ─── Recommendations ───────────────────────────────────── */
+.rec-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.rec-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+}
+.rec-item + .rec-item {
+  border-top: 1px solid var(--border);
+}
+.rec-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 1px;
+}
+.rec-text {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--fg);
+}
+
+/* ─── Repayment Management ──────────────────────────────── */
+.repay-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+}
+.repay-row + .repay-row {
+  border-top: 1px solid var(--border);
+}
+.repay-info {
+  flex: 1;
+}
+.repay-name {
+  font-size: 13px;
+  font-weight: 500;
+}
+.repay-amount {
+  font-size: 12px;
+  color: var(--muted);
+  font-family: var(--mono);
+  margin-top: 2px;
+}
+.repay-date-wrap {
+  flex-shrink: 0;
+}
+.repay-date {
+  padding: 6px 8px !important;
+  font-size: 12px !important;
+  min-width: 120px;
+}

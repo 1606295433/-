@@ -1,4 +1,4 @@
-/* ─── 轻记 PWA ─────────────────────────────────────────── */
+/* ─── 轻记 PWA v2 ────────────────────────────────────────── */
 (function() {
 'use strict';
 
@@ -8,36 +8,45 @@ const CATS = {
     { id: 'food',      name: '餐饮', color: '#F59E0B', bg: 'var(--amber-soft)',  icon: '<path d="M3 11h18M5 11V7a2 2 0 0 1 2-2h10v6M7 19h10a2 2 0 0 0 2-2v-6H5v6a2 2 0 0 0 2 2z"/>' },
     { id: 'transport', name: '交通', color: '#2563EB', bg: 'var(--blue-soft)',   icon: '<rect x="3" y="7" width="18" height="10" rx="2"/><path d="M7 11h4M15 11h2"/><circle cx="7.5" cy="17" r="1.5"/><circle cx="16.5" cy="17" r="1.5"/>' },
     { id: 'shop',      name: '购物', color: '#EC4899', bg: 'var(--pink-soft)',   icon: '<path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>' },
+    { id: 'housing',   name: '住宿', color: '#8B5CF6', bg: 'var(--purple-soft)', icon: '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>' },
+    { id: 'rent',      name: '房租', color: '#7C3AED', bg: 'var(--purple-soft)', icon: '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><rect x="9" y="14" width="6" height="8"/>' },
+    { id: 'water',     name: '水费', color: '#0EA5E9', bg: 'var(--sky-soft)',    icon: '<path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>' },
+    { id: 'electric',  name: '电费', color: '#EAB308', bg: 'var(--amber-soft)',  icon: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>' },
+    { id: 'phone',     name: '话费', color: '#6366F1', bg: 'var(--indigo-soft)', icon: '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>' },
     { id: 'study',     name: '学习', color: '#14B8A6', bg: 'var(--green-soft)',  icon: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>' },
     { id: 'fun',       name: '娱乐', color: '#10B981', bg: 'var(--green-soft)',  icon: '<circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/>' },
     { id: 'other',     name: '其他', color: '#F97316', bg: 'var(--orange-soft)', icon: '<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>' }
   ],
   income: [
-    { id: 'salary',   name: '工资',   color: '#10B981', bg: 'var(--green-soft)', icon: '<line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>' },
-    { id: 'parttime', name: '兼职',   color: '#2563EB', bg: 'var(--blue-soft)',  icon: '<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>' },
-    { id: 'bonus',    name: '奖金',   color: '#F59E0B', bg: 'var(--amber-soft)', icon: '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>' },
-    { id: 'gift',     name: '红包',   color: '#EF4444', bg: 'var(--red-soft)',   icon: '<path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4h-4z"/>' },
-    { id: 'refund',   name: '退款',   color: '#14B8A6', bg: 'var(--green-soft)', icon: '<polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>' },
-    { id: 'other_in', name: '其他',   color: '#F97316', bg: 'var(--orange-soft)',icon: '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/>' }
+    { id: 'salary',    name: '工资',   color: '#10B981', bg: 'var(--green-soft)',  icon: '<line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>' },
+    { id: 'parttime',  name: '兼职',   color: '#2563EB', bg: 'var(--blue-soft)',   icon: '<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>' },
+    { id: 'bonus',     name: '奖金',   color: '#F59E0B', bg: 'var(--amber-soft)',  icon: '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>' },
+    { id: 'gift',      name: '红包',   color: '#EF4444', bg: 'var(--red-soft)',    icon: '<path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4h-4z"/>' },
+    { id: 'transfer',  name: '转账',   color: '#06B6D4', bg: 'var(--cyan-soft)',   icon: '<polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>' },
+    { id: 'refund',    name: '退款',   color: '#14B8A6', bg: 'var(--green-soft)',  icon: '<polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>' },
+    { id: 'other_in',  name: '其他',   color: '#F97316', bg: 'var(--orange-soft)', icon: '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/>' }
   ]
 };
 
 const PAY_METHODS = [
-  { id: 'wechat',  name: '微信',   icon: '<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>' },
-  { id: 'alipay',  name: '支付宝', icon: '<circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/>' },
-  { id: 'bank',    name: '银行卡', icon: '<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20"/>' },
-  { id: 'cash',    name: '现金',   icon: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>' }
+  { id: 'wechat',  name: '微信',     icon: '<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>', credit: false },
+  { id: 'alipay',  name: '支付宝',   icon: '<circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/>', credit: false },
+  { id: 'bank',    name: '银行卡',   icon: '<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20"/>', credit: false },
+  { id: 'cash',    name: '现金',     icon: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>', credit: false },
+  { id: 'huabei',      name: '花呗',       icon: '<rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>', credit: true },
+  { id: 'douyin',      name: '抖音月付',   icon: '<circle cx="12" cy="12" r="9"/><path d="M12 6v8"/><circle cx="12" cy="16" r="1"/>', credit: true },
+  { id: 'meituan',     name: '美团月付',   icon: '<path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/>', credit: true },
+  { id: 'wxcredit',    name: '先用后付',   icon: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>', credit: true },
+  { id: 'jdbaitiao',   name: '京东白条',   icon: '<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M12 9v6M9 12h6"/>', credit: true },
+  { id: 'creditcard',  name: '信用卡',     icon: '<rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/>', credit: true }
 ];
+
+const CREDIT_IDS = PAY_METHODS.filter(p => p.credit).map(p => p.id);
 
 const STORAGE_KEY = 'qingji_data';
 const USER_KEY    = 'qingji_user';
 
-// ─── Supabase Cloud Sync ─────────────────────────────────
-// 使用说明：
-// 1. 打开 https://supabase.com 注册免费账号
-// 2. 创建新项目，复制 Project URL 和 anon/public key
-// 3. 在 SQL Editor 中运行下方建表语句
-// 4. 将 URL 和 KEY 填入下面两行
+// ─── Supabase Cloud Sync (个人数据隔离) ──────────────────
 const SUPABASE_URL = 'https://itafoblrdrmjalbldoddq.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_tuwwaA4uprOoICnSk-YUsA_8eAc_fpo';
 
@@ -45,7 +54,6 @@ let supabase = null;
 let userId = '';
 let syncTimer = null;
 
-// 初始化 Supabase 客户端
 function initSupabase() {
   if (SUPABASE_URL.includes('你的项目') || !window.supabase) return null;
   try {
@@ -57,7 +65,6 @@ function initSupabase() {
   }
 }
 
-// 获取或生成用户 ID
 function getUserId() {
   if (userId) return userId;
   userId = localStorage.getItem(USER_KEY);
@@ -68,17 +75,14 @@ function getUserId() {
   return userId;
 }
 
-// 云端推送：将本地新记录上传
+// 推送单条记录到云端（按 user_id 隔离）
 async function cloudPush(txn) {
   if (!supabase) return false;
-  const data = loadData();
-  if (!data.groupId) return false;
   try {
     const { error } = await supabase
       .from('transactions')
       .upsert({
         id: txn.id,
-        group_id: data.groupId,
         user_id: getUserId(),
         type: txn.type,
         category: txn.category,
@@ -97,16 +101,14 @@ async function cloudPush(txn) {
   }
 }
 
-// 云端拉取：从云端下载同组数据并合并
+// 拉取当前用户的云端数据
 async function cloudPull() {
   if (!supabase) return [];
-  const data = loadData();
-  if (!data.groupId) return [];
   try {
     const { data: rows, error } = await supabase
       .from('transactions')
       .select('*')
-      .eq('group_id', data.groupId)
+      .eq('user_id', getUserId())
       .order('created_at', { ascending: false });
     if (error) { console.warn('Pull failed:', error); return []; }
     return rows || [];
@@ -116,7 +118,7 @@ async function cloudPull() {
   }
 }
 
-// 合并云端数据到本地（按 ID 去重，保留本地数据）
+// 合并云端数据到本地（按 ID 去重）
 function mergeCloudData(cloudRows) {
   const data = loadData();
   const localIds = new Set(data.transactions.map(t => t.id));
@@ -137,24 +139,20 @@ function mergeCloudData(cloudRows) {
     }
   });
   if (added > 0) {
-    // 按日期排序
     data.transactions.sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''));
     saveData(data);
   }
   return added;
 }
 
-// 执行同步（先推后拉）
+// 全量同步（先推后拉）
 async function syncCloud() {
   if (!supabase) { toast('未配置云服务'); return 0; }
-  const data = loadData();
-  if (!data.groupId) { toast('请先创建或加入团体'); return 0; }
   toast('同步中...');
-  // 推送所有本地记录
+  const data = loadData();
   for (const txn of data.transactions) {
     await cloudPush(txn);
   }
-  // 拉取云端记录
   const rows = await cloudPull();
   const added = mergeCloudData(rows);
   toast(added > 0 ? '同步完成，新增 ' + added + ' 条' : '同步完成');
@@ -165,7 +163,7 @@ async function syncCloud() {
 function scheduleSync() {
   clearTimeout(syncTimer);
   syncTimer = setTimeout(() => {
-    if (supabase && loadData().groupId) {
+    if (supabase) {
       cloudPull().then(rows => {
         const added = mergeCloudData(rows);
         if (added > 0 && currentView === 'home') renderHome();
@@ -174,11 +172,13 @@ function scheduleSync() {
   }, 2000);
 }
 
-// Supabase 建表 SQL（在 Supabase SQL Editor 中运行）：
+// Supabase 建表 SQL（v2 - 个人数据隔离模式）：
 /*
+-- 如果之前已建表，先删除旧表
+-- DROP TABLE IF EXISTS transactions;
+
 CREATE TABLE transactions (
   id TEXT PRIMARY KEY,
-  group_id TEXT NOT NULL,
   user_id TEXT NOT NULL,
   type TEXT NOT NULL,
   category TEXT NOT NULL,
@@ -190,14 +190,10 @@ CREATE TABLE transactions (
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- 按团体查询的索引
-CREATE INDEX idx_transactions_group ON transactions(group_id);
 CREATE INDEX idx_transactions_user ON transactions(user_id);
 
--- 开启 Row Level Security（可选，增强安全性）
 ALTER TABLE transactions ENABLE ROW LEVEL SECURITY;
 
--- 允许匿名读写（适合小群私密使用）
 CREATE POLICY "allow_all" ON transactions FOR ALL USING (true) WITH CHECK (true);
 */
 
@@ -205,55 +201,33 @@ CREATE POLICY "allow_all" ON transactions FOR ALL USING (true) WITH CHECK (true)
 function loadData() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) return JSON.parse(raw);
+    if (raw) {
+      const d = JSON.parse(raw);
+      // 兼容旧数据：补齐新字段
+      if (!d.debts) d.debts = [];
+      if (!d.savings) d.savings = [];
+      if (!d.goals) d.goals = [];
+      if (d.groupId !== undefined) delete d.groupId;
+      return d;
+    }
   } catch(e) {}
-  // First launch: seed with sample data
-  const data = { transactions: [], budget: 2000, groupId: null, nickname: '' };
-  seedSampleData(data);
-  return data;
-}
-
-function seedSampleData(data) {
-  const now = new Date();
-  const y = now.getFullYear();
-  const m = String(now.getMonth() + 1).padStart(2, '0');
-  const d = String(now.getDate()).padStart(2, '0');
-  const samples = [
-    { type: 'income',  category: 'parttime', amount: 800,  payMethod: 'wechat', note: '兼职收入',       date: y+'-'+m+'-25' },
-    { type: 'income',  category: 'gift',     amount: 200,  payMethod: 'wechat', note: '生日红包',       date: y+'-'+m+'-20' },
-    { type: 'expense', category: 'food',     amount: 15,   payMethod: 'wechat', note: '午餐 · 食堂',   date: y+'-'+m+'-'+d },
-    { type: 'expense', category: 'transport',amount: 50,   payMethod: 'alipay', note: '地铁充值',       date: y+'-'+m+'-'+d },
-    { type: 'expense', category: 'shop',     amount: 89,   payMethod: 'alipay', note: '淘宝 · 文具',   date: y+'-'+m+'-'+String(Math.max(1,now.getDate()-1)).padStart(2,'0') },
-    { type: 'expense', category: 'study',    amount: 45,   payMethod: 'wechat', note: '考研资料',       date: y+'-'+m+'-'+String(Math.max(1,now.getDate()-1)).padStart(2,'0') },
-    { type: 'expense', category: 'food',     amount: 32,   payMethod: 'wechat', note: '晚餐 · 外卖',   date: y+'-'+m+'-'+String(Math.max(1,now.getDate()-2)).padStart(2,'0') },
-    { type: 'expense', category: 'fun',      amount: 35,   payMethod: 'wechat', note: '电影票',         date: y+'-'+m+'-'+String(Math.max(1,now.getDate()-3)).padStart(2,'0') },
-    { type: 'expense', category: 'food',     amount: 18,   payMethod: 'alipay', note: '早餐 · 包子',   date: y+'-'+m+'-'+String(Math.max(1,now.getDate()-3)).padStart(2,'0') },
-    { type: 'expense', category: 'transport',amount: 12,   payMethod: 'alipay', note: '共享单车月卡',   date: y+'-'+m+'-'+String(Math.max(1,now.getDate()-4)).padStart(2,'0') },
-    { type: 'expense', category: 'food',     amount: 28,   payMethod: 'wechat', note: '奶茶 · 蜜雪',   date: y+'-'+m+'-'+String(Math.max(1,now.getDate()-5)).padStart(2,'0') },
-    { type: 'expense', category: 'other',    amount: 100,  payMethod: 'bank',   note: '班费',           date: y+'-'+m+'-'+String(Math.max(1,now.getDate()-6)).padStart(2,'0') },
-    { type: 'expense', category: 'shop',     amount: 159,  payMethod: 'alipay', note: '运动鞋',         date: y+'-'+m+'-10' },
-    { type: 'expense', category: 'food',     amount: 42,   payMethod: 'wechat', note: '聚餐 AA',       date: y+'-'+m+'-08' },
-    { type: 'expense', category: 'study',    amount: 68,   payMethod: 'alipay', note: '网课会员',       date: y+'-0'+Math.max(1,now.getMonth())+'-28' },
-  ];
-  samples.forEach(s => {
-    s.id = Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
-    s.createdAt = new Date(s.date).toISOString();
-    data.transactions.push(s);
-  });
-  saveData(data);
+  return { transactions: [], budget: 2000, debts: [], savings: [], goals: [] };
 }
 
 function saveData(data) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 }
 
+function genId() {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+}
+
 function addTransaction(txn) {
   const data = loadData();
-  txn.id = Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+  txn.id = genId();
   txn.createdAt = new Date().toISOString();
   data.transactions.unshift(txn);
   saveData(data);
-  // 云同步：推送新记录 + 拉取他人数据
   cloudPush(txn);
   scheduleSync();
   return txn;
@@ -324,7 +298,11 @@ function getCatInfo(catId, type) {
 }
 
 function getPayInfo(payId) {
-  return PAY_METHODS.find(p => p.id === payId) || { name: payId, icon: '' };
+  return PAY_METHODS.find(p => p.id === payId) || { name: payId, icon: '', credit: false };
+}
+
+function isCreditPay(payId) {
+  return CREDIT_IDS.includes(payId);
 }
 
 function toast(msg) {
@@ -339,11 +317,45 @@ function todayStr() {
   return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
 }
 
+// 获取信用消费欠款汇总（从交易记录中计算）
+function getCreditOutstanding() {
+  const data = loadData();
+  const map = {};
+  data.transactions.forEach(t => {
+    if (t.type === 'expense' && isCreditPay(t.payMethod)) {
+      if (!map[t.payMethod]) map[t.payMethod] = 0;
+      map[t.payMethod] += t.amount;
+    }
+  });
+  return map;
+}
+
+// 检查即将到期的还款提醒（7天内）
+function getUpcomingDueDates() {
+  const data = loadData();
+  const now = new Date();
+  const weekLater = new Date(now);
+  weekLater.setDate(weekLater.getDate() + 7);
+  const reminders = [];
+  CREDIT_IDS.forEach(cid => {
+    const dueDate = data['due_' + cid];
+    if (dueDate) {
+      const dd = new Date(dueDate);
+      if (dd <= weekLater && dd >= now) {
+        const days = Math.ceil((dd - now) / (1000 * 60 * 60 * 24));
+        const payInfo = getPayInfo(cid);
+        reminders.push({ payMethod: cid, name: payInfo.name, dueDate: dueDate, daysLeft: days });
+      }
+    }
+  });
+  return reminders;
+}
+
 // ─── SVG Icons (reusable) ────────────────────────────────
 const ICONS = {
   bell: '<path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>',
   settings: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>',
-  users: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+  cloud: '<path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>',
   calendar: '<rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>',
   download: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>',
   upload: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>',
@@ -357,6 +369,10 @@ const ICONS = {
   alertCirc: '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>',
   barChart: '<line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/>',
   refresh: '<polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>',
+  creditCard: '<rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/>',
+  dollarSign: '<line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',
+  plus: '<line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>',
+  lightbulb: '<path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/>',
 };
 
 function svgIcon(name, size) {
@@ -394,7 +410,7 @@ function renderHome() {
   const s = calcSummary(txns);
   const data = loadData();
   const budget = data.budget || 2000;
-  const pct = Math.min(Math.round(s.expense / budget * 100), 100);
+  const pct = budget > 0 ? Math.min(Math.round(s.expense / budget * 100), 100) : 0;
   const recent = txns.slice(0, 8);
 
   const header = $('#header');
@@ -403,6 +419,24 @@ function renderHome() {
 
   const el = $('#view-home');
   el.innerHTML = '';
+
+  // 还款提醒
+  const reminders = getUpcomingDueDates();
+  if (reminders.length > 0) {
+    const reminderSection = h('div', { className: 'pad', style: { marginBottom: '12px' } });
+    reminders.forEach(r => {
+      reminderSection.appendChild(
+        h('div', { className: 'alert-card danger', style: { cursor: 'pointer' }, onClick: () => navigate('more') },
+          (() => { const s = document.createElementNS('http://www.w3.org/2000/svg','svg'); s.setAttribute('viewBox','0 0 24 24'); s.innerHTML = ICONS.alertTri; return s; })(),
+          h('div', { className: 'alert-text' },
+            h('div', { className: 'alert-title' }, r.name + '还款提醒'),
+            h('div', { className: 'alert-sub' }, r.daysLeft <= 0 ? '今天到期，请尽快还款！' : '还有 ' + r.daysLeft + ' 天到期（' + r.dueDate + '）')
+          )
+        )
+      );
+    });
+    el.appendChild(reminderSection);
+  }
 
   // Summary Card
   const monthLabel = new Date().getFullYear() + '年' + (new Date().getMonth()+1) + '月';
@@ -502,6 +536,7 @@ function renderHome() {
     recent.forEach(t => {
       const catInfo = getCatInfo(t.category, t.type);
       const isExpense = t.type === 'expense';
+      const payInfo = getPayInfo(t.payMethod);
       listCard.appendChild(
         h('div', { className: 'txn-row', onClick: () => { if(confirm('删除这条记录？')) { deleteTransaction(t.id); renderHome(); }} },
           h('div', { className: 'txn-icon', style: { background: catInfo.bg, color: catInfo.color } },
@@ -509,7 +544,7 @@ function renderHome() {
           ),
           h('div', {},
             h('div', { className: 'txn-title' }, t.note || catInfo.name),
-            h('div', { className: 'txn-sub' }, catInfo.name + ' · ' + t.date)
+            h('div', { className: 'txn-sub' }, catInfo.name + ' · ' + payInfo.name + ' · ' + t.date)
           ),
           h('span', { className: 'txn-amount num ' + (isExpense ? 'expense' : 'income') },
             (isExpense ? '-' : '+') + '¥' + fmt(t.amount))
@@ -602,24 +637,38 @@ function renderAdd() {
   el.appendChild(
     h('button', {
       className: 'btn-primary',
-      onClick: () => {
-        const amount = parseFloat(addState.amount);
-        if (!amount || amount <= 0) { toast('请输入金额'); return; }
-        addTransaction({
-          type: addState.type,
-          category: addState.category,
-          amount: amount,
-          payMethod: addState.payMethod,
-          note: addState.note,
-          date: addState.date
-        });
-        toast('记录成功');
-        addState.amount = '0';
-        addState.note = '';
-        navigate('home');
-      }
+      onClick: () => submitTransaction()
     }, '确认记账')
   );
+}
+
+function submitTransaction() {
+  const amount = parseFloat(addState.amount);
+  if (!amount || amount <= 0) { toast('请输入金额'); return; }
+  addTransaction({
+    type: addState.type,
+    category: addState.category,
+    amount: amount,
+    payMethod: addState.payMethod,
+    note: addState.note,
+    date: addState.date
+  });
+  toast('记录成功');
+  // 如果是信用消费，提醒设置还款日期
+  if (addState.type === 'expense' && isCreditPay(addState.payMethod)) {
+    const payInfo = getPayInfo(addState.payMethod);
+    const data = loadData();
+    if (!data['due_' + addState.payMethod]) {
+      setTimeout(() => {
+        if (confirm('您使用了' + payInfo.name + '消费，是否设置还款日期？')) {
+          showDueDateModal(addState.payMethod);
+        }
+      }, 500);
+    }
+  }
+  addState.amount = '0';
+  addState.note = '';
+  navigate('home');
 }
 
 function buildNumpad() {
@@ -653,20 +702,7 @@ function buildNumpad() {
 
 function handleNumKey(key) {
   if (key === '确认') {
-    const amount = parseFloat(addState.amount);
-    if (!amount || amount <= 0) { toast('请输入金额'); return; }
-    addTransaction({
-      type: addState.type,
-      category: addState.category,
-      amount: amount,
-      payMethod: addState.payMethod,
-      note: addState.note,
-      date: addState.date
-    });
-    toast('记录成功');
-    addState.amount = '0';
-    addState.note = '';
-    navigate('home');
+    submitTransaction();
     return;
   }
   if (key === '⌫') {
@@ -724,7 +760,7 @@ function renderStats() {
   if (txns.length === 0) {
     el.appendChild(h('div', { className: 'empty-state', style: { paddingTop: '60px' } },
       (() => { const s = document.createElementNS('http://www.w3.org/2000/svg','svg'); s.setAttribute('viewBox','0 0 24 24'); s.innerHTML = ICONS.barChart; return s; })(),
-      h('p', {}, '暂无数据')
+      h('p', {}, '暂无数据，开始记账后这里会显示统计')
     ));
     return;
   }
@@ -758,7 +794,6 @@ function renderStats() {
     );
     const donutWrap = h('div', { className: 'donut-wrap' });
 
-    // SVG donut
     const svgNS = 'http://www.w3.org/2000/svg';
     const svg = document.createElementNS(svgNS, 'svg');
     svg.setAttribute('width', '100'); svg.setAttribute('height', '100');
@@ -783,7 +818,6 @@ function renderStats() {
       offset += pct;
     });
 
-    // Center text
     const centerText = document.createElementNS(svgNS, 'text');
     centerText.setAttribute('x', '21'); centerText.setAttribute('y', '22');
     centerText.setAttribute('text-anchor', 'middle'); centerText.setAttribute('font-size', '5');
@@ -794,7 +828,6 @@ function renderStats() {
 
     donutWrap.appendChild(svg);
 
-    // Legend
     const legend = h('div', { className: 'donut-legend' });
     breakdown.forEach(b => {
       const catInfo = getCatInfo(b.cat, 'expense');
@@ -834,7 +867,7 @@ function renderStats() {
   }
 }
 
-// ─── Money View ───────────────────────────────────────────
+// ─── Money View (v2 - 用户自定义负债/存款/目标/建议) ─────
 function renderMoney() {
   const header = $('#header');
   header.innerHTML = '<div><h1>钱袋</h1></div><div></div>';
@@ -843,16 +876,12 @@ function renderMoney() {
   el.innerHTML = '';
 
   const data = loadData();
-  const year = new Date().getFullYear().toString();
-  const yearTxns = data.transactions.filter(t => t.date && t.date.startsWith(year));
-  const yearIncome = yearTxns.filter(t => t.type === 'income').reduce((s, t) => s + t.amount, 0);
-  const yearExpense = yearTxns.filter(t => t.type === 'expense').reduce((s, t) => s + t.amount, 0);
   const monthTxns = getMonthTxns();
   const monthIncome = monthTxns.filter(t => t.type === 'income').reduce((s, t) => s + t.amount, 0);
   const monthExpense = monthTxns.filter(t => t.type === 'expense').reduce((s, t) => s + t.amount, 0);
   const savingsRate = monthIncome > 0 ? Math.round((monthIncome - monthExpense) / monthIncome * 100) : 0;
 
-  // Summary cards
+  // Monthly summary
   el.appendChild(
     h('div', { className: 'money-summary' },
       h('div', { className: 'money-card', style: { background: 'var(--green-soft)', borderColor: 'var(--green)' } },
@@ -882,58 +911,294 @@ function renderMoney() {
     )
   );
 
-  // Income sources
-  const incomeBreakdown = calcCatBreakdown(monthTxns, 'income');
-  if (incomeBreakdown.length > 0) {
-    el.appendChild(h('div', { className: 'section-label' }, '本月收入来源'));
-    const listCard = h('div', { className: 'card', style: { margin: '0 16px 12px', padding: '4px 14px' } });
-    incomeBreakdown.forEach(b => {
-      const catInfo = getCatInfo(b.cat, 'income');
-      listCard.appendChild(
-        h('div', { className: 'sav-row' },
-          h('div', { className: 'sav-icon', style: { background: catInfo.bg, color: catInfo.color } },
-            (() => { const s = document.createElementNS('http://www.w3.org/2000/svg','svg'); s.setAttribute('viewBox','0 0 24 24'); s.innerHTML = catInfo.icon; return s; })()
+  // ── 我的负债 ──
+  const debtsSection = h('div', { className: 'pad', style: { marginBottom: '12px' } });
+  debtsSection.appendChild(h('div', { className: 'flex-between', style: { marginBottom: '8px' } },
+    h('span', { className: 'section-label', style: { padding: 0, margin: 0 } }, '我的负债'),
+    h('button', { className: 'add-debt-btn', onClick: () => showAddDebtModal() }, '+ 添加')
+  ));
+  if (data.debts.length === 0) {
+    debtsSection.appendChild(h('div', { className: 'card', style: { textAlign: 'center', padding: '20px', color: 'var(--muted)', fontSize: '13px' } }, '暂无负债记录'));
+  } else {
+    data.debts.forEach((debt, idx) => {
+      const paidPct = debt.totalAmount > 0 ? Math.round((debt.totalAmount - debt.remainingAmount) / debt.totalAmount * 100) : 0;
+      debtsSection.appendChild(
+        h('div', { className: 'card debt-card' },
+          h('div', { className: 'flex-between', style: { marginBottom: '6px' } },
+            h('span', { style: { fontWeight: '600', fontSize: '14px' } }, debt.name),
+            h('button', { className: 'del-btn', onClick: () => { if(confirm('删除此负债？')) { const d = loadData(); d.debts.splice(idx, 1); saveData(d); renderMoney(); } } }, '×')
           ),
-          h('div', { className: 'sav-info' },
-            h('div', { className: 'sav-name' }, catInfo.name),
-            h('div', { className: 'sav-progress' }, '¥' + fmt(b.amount))
+          h('div', { className: 'debt-detail' },
+            h('span', {}, '总额 ¥' + fmt(debt.totalAmount)),
+            h('span', {}, ' · 剩余 ¥' + fmt(debt.remainingAmount)),
+            debt.monthlyPayment ? h('span', {}, ' · 月供 ¥' + fmt(debt.monthlyPayment)) : null,
+            debt.dueDay ? h('span', { style: { color: 'var(--red)' } }, ' · 每月' + debt.dueDay + '日还款') : null
           ),
-          h('span', { className: 'num fw-600', style: { color: 'var(--green)', fontSize: '14px' } }, '+¥' + fmt(b.amount))
+          h('div', { style: { height: '4px', background: 'var(--border)', borderRadius: '2px', overflow: 'hidden', marginTop: '8px' } },
+            h('div', { style: { height: '100%', width: paidPct + '%', background: 'var(--green)', borderRadius: '2px' } })
+          ),
+          h('div', { className: 'text-xs text-muted', style: { marginTop: '4px' } }, '已还 ' + paidPct + '%')
         )
       );
     });
-    el.appendChild(listCard);
   }
+  el.appendChild(debtsSection);
 
-  // Savings goals
-  el.appendChild(h('div', { className: 'section-label' }, '存款目标'));
-  const goalsCard = h('div', { className: 'card', style: { margin: '0 16px 16px', padding: '4px 14px' } });
-  const goals = [
-    { name: '应急基金', current: 800, target: 2000, color: 'var(--green)' },
-    { name: '旅行基金', current: 350, target: 1500, color: 'var(--accent)' },
-    { name: '数码产品', current: 1200, target: 3000, color: 'var(--teal)' }
-  ];
-  goals.forEach(g => {
-    const pct = Math.round(g.current / g.target * 100);
-    goalsCard.appendChild(
-      h('div', { className: 'sav-row' },
-        h('div', { className: 'sav-icon', style: { background: 'var(--blue-soft)', color: 'var(--accent)' } },
-          (() => { const s = document.createElementNS('http://www.w3.org/2000/svg','svg'); s.setAttribute('viewBox','0 0 24 24'); s.innerHTML = ICONS.target; return s; })()
-        ),
-        h('div', { className: 'sav-info' },
-          h('div', { className: 'sav-name' }, g.name),
-          h('div', { className: 'sav-progress' }, '¥' + fmt(g.current) + ' / ¥' + fmt(g.target))
-        ),
-        h('div', {},
-          h('div', { className: 'sav-bar', style: { width: '60px' } },
-            h('div', { className: 'sav-bar-fill', style: { width: pct + '%', background: g.color } })
+  // ── 我的存款 ──
+  const savingsSection = h('div', { className: 'pad', style: { marginBottom: '12px' } });
+  savingsSection.appendChild(h('div', { className: 'flex-between', style: { marginBottom: '8px' } },
+    h('span', { className: 'section-label', style: { padding: 0, margin: 0 } }, '我的存款'),
+    h('button', { className: 'add-debt-btn', onClick: () => showAddSavingsModal() }, '+ 添加')
+  ));
+  if (data.savings.length === 0) {
+    savingsSection.appendChild(h('div', { className: 'card', style: { textAlign: 'center', padding: '20px', color: 'var(--muted)', fontSize: '13px' } }, '暂无存款记录'));
+  } else {
+    data.savings.forEach((sav, idx) => {
+      savingsSection.appendChild(
+        h('div', { className: 'card debt-card' },
+          h('div', { className: 'flex-between', style: { marginBottom: '6px' } },
+            h('span', { style: { fontWeight: '600', fontSize: '14px' } }, sav.name),
+            h('button', { className: 'del-btn', onClick: () => { if(confirm('删除此存款？')) { const d = loadData(); d.savings.splice(idx, 1); saveData(d); renderMoney(); } } }, '×')
           ),
-          h('div', { className: 'text-xs text-muted', style: { textAlign: 'center', marginTop: '2px' } }, pct + '%')
+          h('div', { className: 'debt-detail' },
+            h('span', {}, '余额 ¥' + fmt(sav.currentAmount)),
+            sav.monthlyDeposit ? h('span', {}, ' · 月存 ¥' + fmt(sav.monthlyDeposit)) : null
+          )
         )
-      )
-    );
-  });
-  el.appendChild(goalsCard);
+      );
+    });
+  }
+  el.appendChild(savingsSection);
+
+  // ── 存款目标 ──
+  const goalsSection = h('div', { className: 'pad', style: { marginBottom: '12px' } });
+  goalsSection.appendChild(h('div', { className: 'flex-between', style: { marginBottom: '8px' } },
+    h('span', { className: 'section-label', style: { padding: 0, margin: 0 } }, '存款目标'),
+    h('button', { className: 'add-debt-btn', onClick: () => showAddGoalModal() }, '+ 添加')
+  ));
+  if (!data.goals || data.goals.length === 0) {
+    goalsSection.appendChild(h('div', { className: 'card', style: { textAlign: 'center', padding: '20px', color: 'var(--muted)', fontSize: '13px' } }, '暂无存款目标'));
+  } else {
+    data.goals.forEach((goal, idx) => {
+      const totalSavings = data.savings.reduce((s, v) => s + v.currentAmount, 0);
+      const pct = goal.targetAmount > 0 ? Math.min(Math.round(totalSavings / goal.targetAmount * 100), 100) : 0;
+      let progressText = '';
+      if (goal.targetMonths) {
+        const monthlyNeed = goal.targetAmount > 0 ? Math.ceil((goal.targetAmount - totalSavings) / goal.targetMonths) : 0;
+        progressText = '需在 ' + goal.targetMonths + ' 个月内存 ¥' + fmt(goal.targetAmount) + '，每月需存 ¥' + fmt(monthlyNeed);
+      } else if (goal.monthlyAmount) {
+        const monthsNeeded = goal.monthlyAmount > 0 ? Math.ceil((goal.targetAmount - totalSavings) / goal.monthlyAmount) : 0;
+        progressText = '每月存 ¥' + fmt(goal.monthlyAmount) + '，约需 ' + monthsNeeded + ' 个月达成';
+      }
+      goalsSection.appendChild(
+        h('div', { className: 'card goal-card' },
+          h('div', { className: 'flex-between', style: { marginBottom: '6px' } },
+            h('span', { style: { fontWeight: '600', fontSize: '14px' } }, goal.name),
+            h('button', { className: 'del-btn', onClick: () => { if(confirm('删除此目标？')) { const d = loadData(); d.goals.splice(idx, 1); saveData(d); renderMoney(); } } }, '×')
+          ),
+          h('div', { className: 'debt-detail' }, '目标 ¥' + fmt(goal.targetAmount) + ' · 当前 ¥' + fmt(totalSavings)),
+          h('div', { style: { height: '4px', background: 'var(--border)', borderRadius: '2px', overflow: 'hidden', marginTop: '8px' } },
+            h('div', { style: { height: '100%', width: pct + '%', background: 'var(--accent)', borderRadius: '2px' } })
+          ),
+          h('div', { className: 'text-xs', style: { marginTop: '4px', color: 'var(--accent)' } }, pct + '%'),
+          progressText ? h('div', { className: 'text-xs text-muted', style: { marginTop: '4px' } }, progressText) : null
+        )
+      );
+    });
+  }
+  el.appendChild(goalsSection);
+
+  // ── 月度建议 ──
+  const recommendations = generateRecommendations(data, monthIncome, monthExpense);
+  if (recommendations.length > 0) {
+    const recSection = h('div', { className: 'pad', style: { marginBottom: '12px' } });
+    recSection.appendChild(h('div', { className: 'section-label', style: { padding: 0, marginBottom: '8px' } }, '本月建议'));
+    const recCard = h('div', { className: 'card rec-card' });
+    recommendations.forEach(r => {
+      recCard.appendChild(
+        h('div', { className: 'rec-item' },
+          h('span', { className: 'rec-icon' }, r.icon),
+          h('span', { className: 'rec-text' }, r.text)
+        )
+      );
+    });
+    recSection.appendChild(recCard);
+    el.appendChild(recSection);
+  }
+}
+
+function generateRecommendations(data, monthIncome, monthExpense) {
+  const recs = [];
+  const netIncome = monthIncome - monthExpense;
+  const totalDebtPayment = (data.debts || []).reduce((s, d) => s + (d.monthlyPayment || 0), 0);
+  const totalSavingsDeposit = (data.savings || []).reduce((s, v) => s + (v.monthlyDeposit || 0), 0);
+
+  if (monthIncome === 0 && monthExpense === 0) return recs;
+
+  if (monthExpense > monthIncome && monthIncome > 0) {
+    recs.push({ icon: '⚠️', text: '本月支出超过收入，请注意控制开支，避免过度依赖信用消费。' });
+  }
+  if (totalDebtPayment > 0) {
+    const debtRatio = Math.round(totalDebtPayment / Math.max(monthIncome, 1) * 100);
+    if (debtRatio > 50) {
+      recs.push({ icon: '💰', text: '还款占收入比 ' + debtRatio + '%，建议优先还清高息负债，减少非必要消费。' });
+    } else {
+      recs.push({ icon: '💰', text: '本月需还款 ¥' + fmt(totalDebtPayment) + '，请确保在还款日前准备好资金。' });
+    }
+  }
+  if (netIncome > 0) {
+    const savingsRatio = Math.round(netIncome / monthIncome * 100);
+    if (savingsRatio >= 30) {
+      recs.push({ icon: '🎯', text: '储蓄率达 ' + savingsRatio + '%，理财习惯很好！建议将多余资金按比例分配到存款目标中。' });
+    } else if (savingsRatio >= 10) {
+      recs.push({ icon: '🎯', text: '储蓄率 ' + savingsRatio + '%，建议尝试将储蓄率提高到 30% 以上。' });
+    } else {
+      recs.push({ icon: '🎯', text: '储蓄率偏低（' + savingsRatio + '%），建议制定更严格的预算，减少非必要开支。' });
+    }
+  }
+  const creditOutstanding = getCreditOutstanding();
+  const totalCredit = Object.values(creditOutstanding).reduce((s, v) => s + v, 0);
+  if (totalCredit > 0) {
+    recs.push({ icon: '💳', text: '当前信用消费待还 ¥' + fmt(totalCredit) + '，建议及时还款避免利息。' });
+  }
+  if (recs.length === 0 && monthIncome > 0) {
+    recs.push({ icon: '📊', text: '本月收支状况良好，继续保持记账习惯，合理规划财务。' });
+  }
+  return recs;
+}
+
+// ─── Debt / Savings / Goal Modals ────────────────────────
+function showAddDebtModal() {
+  const overlay = h('div', { className: 'modal-overlay', onClick: e => { if (e.target === overlay) overlay.classList.remove('show'); } });
+  const sheet = h('div', { className: 'modal-sheet' });
+  sheet.appendChild(h('div', { className: 'modal-handle' }));
+  sheet.appendChild(h('div', { className: 'modal-title' }, '添加负债'));
+
+  const nameInput = h('input', { className: 'form-input', placeholder: '负债名称（如：助学贷款）' });
+  const totalInput = h('input', { className: 'form-input', type: 'number', placeholder: '总金额' });
+  const remainInput = h('input', { className: 'form-input', type: 'number', placeholder: '剩余金额' });
+  const monthlyInput = h('input', { className: 'form-input', type: 'number', placeholder: '每月还款金额' });
+  const dueDayInput = h('input', { className: 'form-input', type: 'number', placeholder: '还款日（每月几号，如 15）', min: '1', max: '31' });
+
+  sheet.appendChild(h('div', { className: 'form-label' }, '名称'));
+  sheet.appendChild(nameInput);
+  sheet.appendChild(h('div', { className: 'form-label', style: { marginTop: '10px' } }, '总金额'));
+  sheet.appendChild(totalInput);
+  sheet.appendChild(h('div', { className: 'form-label', style: { marginTop: '10px' } }, '剩余金额'));
+  sheet.appendChild(remainInput);
+  sheet.appendChild(h('div', { className: 'form-label', style: { marginTop: '10px' } }, '月供金额'));
+  sheet.appendChild(monthlyInput);
+  sheet.appendChild(h('div', { className: 'form-label', style: { marginTop: '10px' } }, '还款日'));
+  sheet.appendChild(dueDayInput);
+
+  sheet.appendChild(h('button', {
+    className: 'btn-primary',
+    style: { marginTop: '16px' },
+    onClick: () => {
+      const name = nameInput.value.trim();
+      const total = parseFloat(totalInput.value) || 0;
+      const remain = parseFloat(remainInput.value) || total;
+      const monthly = parseFloat(monthlyInput.value) || 0;
+      const dueDay = parseInt(dueDayInput.value) || 0;
+      if (!name) { toast('请输入名称'); return; }
+      if (total <= 0) { toast('请输入总金额'); return; }
+      const d = loadData();
+      d.debts.push({ name, totalAmount: total, remainingAmount: remain, monthlyPayment: monthly, dueDay: dueDay || null });
+      saveData(d);
+      overlay.classList.remove('show');
+      renderMoney();
+      toast('负债已添加');
+    }
+  }, '保存'));
+
+  overlay.appendChild(sheet);
+  document.body.appendChild(overlay);
+  requestAnimationFrame(() => overlay.classList.add('show'));
+}
+
+function showAddSavingsModal() {
+  const overlay = h('div', { className: 'modal-overlay', onClick: e => { if (e.target === overlay) overlay.classList.remove('show'); } });
+  const sheet = h('div', { className: 'modal-sheet' });
+  sheet.appendChild(h('div', { className: 'modal-handle' }));
+  sheet.appendChild(h('div', { className: 'modal-title' }, '添加存款'));
+
+  const nameInput = h('input', { className: 'form-input', placeholder: '存款名称（如：活期存款）' });
+  const amountInput = h('input', { className: 'form-input', type: 'number', placeholder: '当前余额' });
+  const monthlyInput = h('input', { className: 'form-input', type: 'number', placeholder: '每月存入金额（可选）' });
+
+  sheet.appendChild(h('div', { className: 'form-label' }, '名称'));
+  sheet.appendChild(nameInput);
+  sheet.appendChild(h('div', { className: 'form-label', style: { marginTop: '10px' } }, '当前余额'));
+  sheet.appendChild(amountInput);
+  sheet.appendChild(h('div', { className: 'form-label', style: { marginTop: '10px' } }, '每月存入'));
+  sheet.appendChild(monthlyInput);
+
+  sheet.appendChild(h('button', {
+    className: 'btn-primary',
+    style: { marginTop: '16px' },
+    onClick: () => {
+      const name = nameInput.value.trim();
+      const amount = parseFloat(amountInput.value) || 0;
+      const monthly = parseFloat(monthlyInput.value) || 0;
+      if (!name) { toast('请输入名称'); return; }
+      const d = loadData();
+      d.savings.push({ name, currentAmount: amount, monthlyDeposit: monthly });
+      saveData(d);
+      overlay.classList.remove('show');
+      renderMoney();
+      toast('存款已添加');
+    }
+  }, '保存'));
+
+  overlay.appendChild(sheet);
+  document.body.appendChild(overlay);
+  requestAnimationFrame(() => overlay.classList.add('show'));
+}
+
+function showAddGoalModal() {
+  const overlay = h('div', { className: 'modal-overlay', onClick: e => { if (e.target === overlay) overlay.classList.remove('show'); } });
+  const sheet = h('div', { className: 'modal-sheet' });
+  sheet.appendChild(h('div', { className: 'modal-handle' }));
+  sheet.appendChild(h('div', { className: 'modal-title' }, '添加存款目标'));
+
+  const nameInput = h('input', { className: 'form-input', placeholder: '目标名称（如：旅行基金）' });
+  const targetInput = h('input', { className: 'form-input', type: 'number', placeholder: '目标金额' });
+  const monthsInput = h('input', { className: 'form-input', type: 'number', placeholder: '目标月数（多长时间内达成）' });
+  const monthlyInput = h('input', { className: 'form-input', type: 'number', placeholder: '每月存入金额（与月数二选一）' });
+
+  sheet.appendChild(h('div', { className: 'form-label' }, '目标名称'));
+  sheet.appendChild(nameInput);
+  sheet.appendChild(h('div', { className: 'form-label', style: { marginTop: '10px' } }, '目标金额'));
+  sheet.appendChild(targetInput);
+  sheet.appendChild(h('div', { className: 'form-label', style: { marginTop: '10px' } }, '目标月数'));
+  sheet.appendChild(monthsInput);
+  sheet.appendChild(h('div', { className: 'form-label', style: { marginTop: '10px' } }, '每月存入金额'));
+  sheet.appendChild(monthlyInput);
+  sheet.appendChild(h('div', { className: 'text-xs text-muted', style: { marginTop: '6px', textAlign: 'center' } }, '提示：填写目标月数或每月存入金额其中之一即可'));
+
+  sheet.appendChild(h('button', {
+    className: 'btn-primary',
+    style: { marginTop: '16px' },
+    onClick: () => {
+      const name = nameInput.value.trim();
+      const target = parseFloat(targetInput.value) || 0;
+      const months = parseInt(monthsInput.value) || 0;
+      const monthly = parseFloat(monthlyInput.value) || 0;
+      if (!name) { toast('请输入目标名称'); return; }
+      if (target <= 0) { toast('请输入目标金额'); return; }
+      const d = loadData();
+      if (!d.goals) d.goals = [];
+      d.goals.push({ name, targetAmount: target, targetMonths: months || null, monthlyAmount: monthly || null });
+      saveData(d);
+      overlay.classList.remove('show');
+      renderMoney();
+      toast('目标已添加');
+    }
+  }, '保存'));
+
+  overlay.appendChild(sheet);
+  document.body.appendChild(overlay);
+  requestAnimationFrame(() => overlay.classList.add('show'));
 }
 
 // ─── More View ────────────────────────────────────────────
@@ -945,8 +1210,8 @@ function renderMore() {
   el.innerHTML = '';
 
   const menuData = [
-    { icon: 'users', color: 'var(--accent)', bg: 'var(--accent-soft)', title: '共享账本', sub: '和同学AA制记账', action: () => showGroupModal() },
-    { icon: 'refresh', color: 'var(--teal)', bg: 'var(--green-soft)', title: '云同步', sub: supabase ? '同步数据到云端' : '未配置云服务', action: () => syncCloud() },
+    { icon: 'cloud', color: 'var(--teal)', bg: 'var(--green-soft)', title: '云同步', sub: supabase ? '备份数据到云端' : '未配置云服务', action: () => showCloudSyncModal() },
+    { icon: 'creditCard', color: 'var(--red)', bg: 'var(--red-soft)', title: '还款管理', sub: '管理信用消费还款日期', action: () => showRepaymentManage() },
     { icon: 'calendar', color: 'var(--teal)', bg: 'var(--green-soft)', title: '每周统计', sub: '周度收支对比分析', action: () => navigate('stats') },
     { icon: 'pieChart', color: 'var(--pink)', bg: 'var(--pink-soft)', title: '每月综合分析', sub: '月度全方位财务报告', action: () => navigate('stats') },
     { icon: 'download', color: 'var(--green)', bg: 'var(--green-soft)', title: '导出数据', sub: '备份记账数据到文件', action: () => exportData() },
@@ -970,87 +1235,168 @@ function renderMore() {
     );
   });
   el.appendChild(h('div', { className: 'card', style: { margin: '16px', padding: '0 14px' } }, menuList));
-
-  // Group info
-  const data = loadData();
-  if (data.groupId) {
-    el.appendChild(
-      h('div', { className: 'pad' },
-        h('div', { className: 'card', style: { textAlign: 'center' } },
-          h('div', { className: 'text-xs text-muted', style: { marginBottom: '4px' } }, '当前团体码'),
-          h('div', { className: 'num fw-600', style: { fontSize: '20px', color: 'var(--accent)', letterSpacing: '0.1em' } }, data.groupId),
-          h('div', { className: 'text-xs text-muted', style: { marginTop: '6px' } }, '分享此码给室友加入')
-        )
-      )
-    );
-  }
 }
 
-// ─── Group Modal ──────────────────────────────────────────
-function showGroupModal() {
-  const data = loadData();
+// ─── Cloud Sync Modal (个人模式) ─────────────────────────
+function showCloudSyncModal() {
   const overlay = h('div', { className: 'modal-overlay', onClick: e => { if (e.target === overlay) overlay.classList.remove('show'); } });
   const sheet = h('div', { className: 'modal-sheet' });
   sheet.appendChild(h('div', { className: 'modal-handle' }));
-  sheet.appendChild(h('div', { className: 'modal-title' }, '共享账本'));
+  sheet.appendChild(h('div', { className: 'modal-title' }, '云同步'));
 
-  if (data.groupId) {
-    sheet.appendChild(
-      h('div', { className: 'code-display' },
-        h('div', { className: 'code-value' }, data.groupId),
-        h('div', { className: 'code-hint' }, '将此码分享给室友，他们输入后即可同步数据')
-      )
-    );
+  if (!supabase) {
+    sheet.appendChild(h('div', { className: 'text-sm text-muted', style: { textAlign: 'center', padding: '20px' } }, '云服务未配置，请联系管理员设置 Supabase'));
+  } else {
+    const uid = getUserId();
+    sheet.appendChild(h('div', { className: 'code-display' },
+      h('div', { className: 'text-xs text-muted', style: { marginBottom: '8px' } }, '我的用户 ID'),
+      h('div', { className: 'code-value', style: { fontSize: '16px' } }, uid),
+      h('div', { className: 'code-hint' }, '您的数据与此 ID 绑定，换设备后输入 ID 即可恢复数据')
+    ));
     sheet.appendChild(h('button', {
       className: 'btn-primary',
-      style: { marginTop: '8px' },
       onClick: () => {
-        navigator.clipboard.writeText(data.groupId).then(() => toast('团体码已复制'));
-        overlay.classList.remove('show');
+        navigator.clipboard.writeText(uid).then(() => toast('用户 ID 已复制'));
       }
-    }, '复制团体码'));
+    }, '复制用户 ID'));
     sheet.appendChild(h('button', {
       className: 'btn-primary',
-      style: { marginTop: '8px', background: 'var(--red)' },
-      onClick: () => {
-        if (confirm('确定退出当前团体？')) {
-          const d = loadData(); d.groupId = null; saveData(d);
+      style: { marginTop: '8px', background: 'var(--green)' },
+      onClick: async () => {
+        overlay.classList.remove('show');
+        await syncCloud();
+      }
+    }, '立即同步'));
+
+    // 恢复数据（输入他人或旧设备的用户ID）
+    sheet.appendChild(h('div', { className: 'text-xs text-muted', style: { marginTop: '16px', textAlign: 'center' } }, '或输入旧设备的用户 ID 恢复数据'));
+    const restoreInput = h('input', { className: 'form-input', style: { textAlign: 'center', fontFamily: 'var(--mono)', fontSize: '13px', marginTop: '8px' }, placeholder: '输入用户 ID' });
+    sheet.appendChild(restoreInput);
+    sheet.appendChild(h('button', {
+      className: 'btn-primary',
+      style: { marginTop: '8px', background: 'var(--amber)' },
+      onClick: async () => {
+        const inputId = restoreInput.value.trim();
+        if (!inputId) { toast('请输入用户 ID'); return; }
+        toast('恢复中...');
+        try {
+          const { data: rows, error } = await supabase
+            .from('transactions')
+            .select('*')
+            .eq('user_id', inputId)
+            .order('created_at', { ascending: false });
+          if (error) { toast('恢复失败'); return; }
+          const localData = loadData();
+          const localIds = new Set(localData.transactions.map(t => t.id));
+          let added = 0;
+          (rows || []).forEach(row => {
+            if (!localIds.has(row.id)) {
+              localData.transactions.push({
+                id: row.id, type: row.type, category: row.category,
+                amount: row.amount, payMethod: row.pay_method,
+                note: row.note, date: row.date, createdAt: row.created_at
+              });
+              added++;
+            }
+          });
+          if (added > 0) {
+            localData.transactions.sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''));
+            saveData(localData);
+          }
+          toast('恢复完成，新增 ' + added + ' 条记录');
           overlay.classList.remove('show');
-          renderMore();
-          toast('已退出团体');
+          navigate('home');
+        } catch(e) {
+          toast('恢复失败');
         }
       }
-    }, '退出团体'));
-  } else {
-    sheet.appendChild(h('div', { className: 'text-sm text-muted', style: { textAlign: 'center', marginBottom: '12px' } }, '创建新团体或输入室友分享的团体码'));
-    sheet.appendChild(h('button', {
-      className: 'btn-primary',
-      style: { marginBottom: '8px' },
-      onClick: () => {
-        const code = Math.random().toString(36).slice(2, 8).toUpperCase();
-        const d = loadData(); d.groupId = code; saveData(d);
-        overlay.classList.remove('show');
-        renderMore();
-        toast('团体已创建：' + code);
-        syncCloud();
-      }
-    }, '创建新团体'));
-    const input = h('input', { className: 'form-input', style: { textAlign: 'center', fontFamily: 'var(--mono)', fontSize: '16px', letterSpacing: '0.1em', marginBottom: '8px' }, placeholder: '输入6位团体码', maxLength: '6' });
-    sheet.appendChild(input);
-    sheet.appendChild(h('button', {
-      className: 'btn-primary',
-      style: { background: 'var(--green)' },
-      onClick: () => {
-        const code = input.value.trim().toUpperCase();
-        if (code.length < 4) { toast('请输入有效团体码'); return; }
-        const d = loadData(); d.groupId = code; saveData(d);
-        overlay.classList.remove('show');
-        renderMore();
-        toast('已加入团体：' + code);
-        syncCloud();
-      }
-    }, '加入团体'));
+    }, '恢复数据'));
   }
+
+  overlay.appendChild(sheet);
+  document.body.appendChild(overlay);
+  requestAnimationFrame(() => overlay.classList.add('show'));
+}
+
+// ─── Repayment Management ────────────────────────────────
+function showRepaymentManage() {
+  const overlay = h('div', { className: 'modal-overlay', onClick: e => { if (e.target === overlay) overlay.classList.remove('show'); } });
+  const sheet = h('div', { className: 'modal-sheet' });
+  sheet.appendChild(h('div', { className: 'modal-handle' }));
+  sheet.appendChild(h('div', { className: 'modal-title' }, '还款管理'));
+
+  const data = loadData();
+  const creditOutstanding = getCreditOutstanding();
+  let hasAny = false;
+
+  CREDIT_IDS.forEach(cid => {
+    const payInfo = getPayInfo(cid);
+    const outstanding = creditOutstanding[cid] || 0;
+    const dueDate = data['due_' + cid] || '';
+
+    const row = h('div', { className: 'repay-row' },
+      h('div', { className: 'repay-info' },
+        h('div', { className: 'repay-name' }, payInfo.name),
+        h('div', { className: 'repay-amount' }, outstanding > 0 ? '待还 ¥' + fmt(outstanding) : '未使用')
+      ),
+      h('div', { className: 'repay-date-wrap' },
+        h('input', {
+          className: 'form-input repay-date',
+          type: 'date',
+          value: dueDate,
+          onChange: e => {
+            const d = loadData();
+            d['due_' + cid] = e.target.value;
+            saveData(d);
+            toast(payInfo.name + '还款日期已设置');
+          }
+        })
+      )
+    );
+    sheet.appendChild(row);
+    hasAny = true;
+  });
+
+  if (!hasAny) {
+    sheet.appendChild(h('div', { className: 'text-sm text-muted', style: { textAlign: 'center', padding: '20px' } }, '暂无信用消费方式'));
+  }
+
+  sheet.appendChild(h('div', { className: 'text-xs text-muted', style: { marginTop: '12px', textAlign: 'center' } }, '使用信用消费后请设置还款日期，临近时会在首页提醒'));
+
+  overlay.appendChild(sheet);
+  document.body.appendChild(overlay);
+  requestAnimationFrame(() => overlay.classList.add('show'));
+}
+
+// 单独设置还款日期的弹窗（记账后触发）
+function showDueDateModal(payMethodId) {
+  const overlay = h('div', { className: 'modal-overlay', onClick: e => { if (e.target === overlay) overlay.classList.remove('show'); } });
+  const sheet = h('div', { className: 'modal-sheet' });
+  sheet.appendChild(h('div', { className: 'modal-handle' }));
+  const payInfo = getPayInfo(payMethodId);
+  sheet.appendChild(h('div', { className: 'modal-title' }, '设置' + payInfo.name + '还款日期'));
+
+  const dateInput = h('input', { className: 'form-input', type: 'date', value: '' });
+  sheet.appendChild(h('div', { className: 'form-label' }, '还款日期'));
+  sheet.appendChild(dateInput);
+
+  sheet.appendChild(h('button', {
+    className: 'btn-primary',
+    style: { marginTop: '16px' },
+    onClick: () => {
+      const d = loadData();
+      d['due_' + payMethodId] = dateInput.value;
+      saveData(d);
+      overlay.classList.remove('show');
+      toast('还款日期已设置');
+    }
+  }, '保存'));
+
+  sheet.appendChild(h('button', {
+    className: 'btn-primary',
+    style: { marginTop: '8px', background: 'var(--muted)' },
+    onClick: () => { overlay.classList.remove('show'); }
+  }, '稍后再说'));
 
   overlay.appendChild(sheet);
   document.body.appendChild(overlay);
@@ -1065,7 +1411,6 @@ function showSettings() {
   sheet.appendChild(h('div', { className: 'modal-handle' }));
   sheet.appendChild(h('div', { className: 'modal-title' }, '设置'));
 
-  // Budget setting
   const budgetInput = h('input', { className: 'form-input', type: 'number', value: String(data.budget || 2000), style: { marginBottom: '12px' } });
   sheet.appendChild(h('div', { className: 'form-label' }, '月度预算（元）'));
   sheet.appendChild(budgetInput);
@@ -1082,7 +1427,6 @@ function showSettings() {
     }
   }, '保存设置'));
 
-  // Clear data
   sheet.appendChild(h('button', {
     className: 'btn-primary',
     style: { marginTop: '8px', background: 'var(--red)' },
@@ -1144,7 +1488,6 @@ function importData() {
 
 // ─── Init ─────────────────────────────────────────────────
 function init() {
-  // Initialize cloud sync
   initSupabase();
   getUserId();
 
@@ -1159,27 +1502,21 @@ function init() {
   // Register service worker with update detection
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js').then(reg => {
-      // Check for updates on each page load
       reg.update();
-      // When a new SW is waiting, tell it to activate immediately
       if (reg.waiting) {
         reg.waiting.postMessage('skipWaiting');
       }
-      // Detect new SW installation
       reg.addEventListener('updatefound', () => {
         const newWorker = reg.installing;
         newWorker.addEventListener('statechange', () => {
           if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-            // New content available, activate it
             newWorker.postMessage('skipWaiting');
-            // Reload to get new content
             setTimeout(() => location.reload(), 500);
           }
         });
       });
     }).catch(() => {});
 
-    // Reload when the controlling SW changes (new version activated)
     let reloading = false;
     navigator.serviceWorker.addEventListener('controllerchange', () => {
       if (reloading) return;
