@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#2563EB">
+  <title>轻记</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header id="header"></header>
+
+    <!-- Main Content -->
+    <main id="content">
+      <!-- Home View -->
+      <div id="view-home" class="view active"></div>
+
+      <!-- Add View -->
+      <div id="view-add" class="view"></div>
+
+      <!-- Stats View -->
+      <div id="view-stats" class="view"></div>
+
+      <!-- Money View -->
+      <div id="view-money" class="view"></div>
+
+      <!-- More View -->
+      <div id="view-more" class="view"></div>
+    </main>
+
+    <!-- Tab Bar -->
+    <nav id="tabbar">
+      <a class="tab active" data-view="home">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>首页</span>
+      </a>
+      <a class="tab" data-view="stats">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <span>统计</span>
+      </a>
+      <a class="tab tab-add" data-view="add">
+        <div class="add-btn">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <span>记账</span>
+      </a>
+      <a class="tab" data-view="money">
+        <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <span>钱袋</span>
+      </a>
+      <a class="tab" data-view="more">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+        <span>更多</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>
